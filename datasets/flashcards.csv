@@ -1,0 +1,250 @@
+question,answer
+"The following code contains a red flag.  What method would refactor the following code?
+
+  def double(numbers)
+    result = []
+
+    numbers.each do |num|
+      results << num * 2
+    end
+
+    result
+  end","map"
+"The following code contains a red flag.  What method would refactor the following code?
+
+  def evens(numbers)
+    result = []
+
+    numbers.each do |num|
+      if num.even?
+        results << num
+      end
+    end
+
+    result
+  end","select"
+"Without using pretzel notation, refactor the following code into a one-liner.
+
+  result = []
+
+  numbers.each do |num|
+    if num.even?
+      results << num
+    end
+  end
+
+  result","numbers.select { |num| num.even? }"
+"Using pretzel notation, refactor the following code into a one-liner.
+
+  result = []
+
+  numbers.each do |num|
+    if num.even?
+      results << num
+    end
+  end
+
+  result","numbers.select(&:even?)"
+"The following code contains a red flag.  What method would refactor the following code?
+  counter = 0
+
+  numbers.each do |num|
+    puts num + counter
+
+    counter += 1
+  end",each_with_index
+"Refactor the following code into a one-liner.
+  counter = 0
+
+  numbers.each do |num|
+    puts num + counter
+
+    counter += 1
+  end","numbers.each_with_index { |num, index| puts num + index }"
+"The following code contains a red flag.  What method would refactor the following code?
+
+  def get_user_by_id(id)
+    @users.each do |user|
+      if user.id == id
+        return user
+      end
+    end
+  end","find"
+"Refactor the following code into a one-liner.
+
+  numbers.each do |num|
+    if num == 7
+      return num
+    end
+  end","numbers.find { |num| num == 7 }"
+"The following code contains a red flag.  What method would refactor the following code?
+
+  if message
+    message
+  else
+    DEFAULT_MESSAGE
+  end","||"
+"Refactor the following code into a one-liner.
+
+  if message
+    message
+  else
+    DEFAULT_MESSAGE
+  end","message || DEFAULT_MESSAGE"
+"The following code contains a red flag.  What method would refactor the following code?
+
+  counter = 0
+
+  names.each do |name|
+    if name == 'leeanne'
+      counter += 1
+    end
+  end
+
+  counter","count"
+"Refactor the following code into a one-liner.
+
+  counter = 0
+
+  names.each do |name|
+    if name == 'leeanne'
+      counter += 1
+    end
+  end
+
+  counter","names.count('leeanne')"
+"The following code contains a red flag.  What method would refactor the following code?
+
+  def has_leeanne?
+    names.each do |name|
+      if name == 'leeanne'
+        return true
+      end
+    end
+
+    false
+  end","include?"
+"Refactor the contents of the following method into a one-liner.
+
+  def has_leeanne?
+    names.each do |name|
+      if name == 'leeanne'
+        return true
+      end
+    end
+
+    false
+  end","names.include?('leeanne')"
+"The following code contains a red flag.  What method would refactor the following code?
+
+  def sum(numbers)
+    total = 0
+
+    numbers.each do |num|
+      total += num
+    end
+
+    total
+  end","inject"
+"Refactor the contents of the following method into a one-liner.
+
+  def sum(numbers)
+    total = 0
+
+    numbers.each do |num|
+      total += num
+    end
+
+    total
+  end","numbers.inject(:+)"
+"The following code contains a red flag.  What method would refactor the following code?
+
+  largest = 0
+
+  numbers.each do |num|
+    if num > largest
+      largest = num
+    end
+  end
+
+  largest","max"
+"Refactor the following code into a one-liner.
+
+  largest = 0
+
+  numbers.each do |num|
+    if num > largest
+      largest = num
+    end
+  end
+
+  largest","numbers.max"
+"Rewrite the enumerable to eliminate the red flag.
+
+  scores = {
+    leeanne: 10,
+    sophia:   8,
+    nate:     2
+  }
+
+  scores.map do |person|
+    scores[person]
+  end","attendance.map { |person, score| score }"
+"What is self referring to?  Answer with 'instance' or 'class'.
+
+  class Email
+    def self.all
+      @@emails
+    end
+  end","class"
+"What is self referring to?  Answer with 'instance' or 'class'.
+
+  class Person
+    def initialize(name)
+      @name = name
+    end
+
+    def greet
+      puts 'Hello, ' + self.name
+    end
+  end","instance"
+"What does the *SECOND* self refer to?  Answer with 'instance' or 'class'.
+
+  class Email
+    def self.load(file)
+      self.new(filename: file)
+    end
+  end","class"
+"What is the return value?
+
+  class Array
+    def identity
+      self
+    end
+  end
+
+  [1,2,3].identity","[1,2,3]"
+"Using ActiveRecord, how can I get all users?
+
+","User.all"
+"Using ActiveRecord, how can I get the user with an id of 7?
+
+","User.find_by(id: 7)"
+"Using ActiveRecord, how can I get all users with a status of 'active'?
+
+","User.where(status: 'active')"
+"Using ActiveRecord, how can I get all users with a status of 'active' and an id between 10 and 20?
+
+","User.where(status: 'active', id: 10..20)"
+"Using ActiveRecord, how can I get the last ten users?
+
+","User.last(10)"
+"Using ActiveRecord, how can I get every user's name?
+
+","User.all.pluck(:name)"
+"Using ActiveRecord, how do I create a user with a name of 'leeanne'?
+
+","User.create(name: 'leeanne')"
+"Using ActiveRecord, how can I get 100 users with a status of 'active'?
+
+","User.where(status: 'active').limit(100)"
