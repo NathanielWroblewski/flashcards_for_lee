@@ -189,7 +189,7 @@ question,answer
 
   scores.map do |person|
     scores[person]
-  end","attendance.map { |person, score| score }"
+  end","scores.map { |person, score| score }"
 "What is self referring to?  Answer with 'instance' or 'class'.
 
   class Email
